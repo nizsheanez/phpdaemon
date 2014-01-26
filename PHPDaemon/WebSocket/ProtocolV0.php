@@ -189,7 +189,7 @@ class ProtocolV0 extends Protocol {
 					}
 					$this->conn->drain(1);
 					$data = $this->conn->read($p);
-					$this->conn->drain(1);
+					$this->conn->drain($this->conn->getInputLength());
 					$this->conn->onFrame($data, 'STRING');
 				}
 				else {
